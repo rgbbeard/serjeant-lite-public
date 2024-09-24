@@ -1,19 +1,18 @@
-version: "3"
-
 services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile-php
+      dockerfile: Dockerfile-apache
     container_name: serjeant-lite
     restart: on-failure
     ports:
-      - "10004:80"
+      - "0.0.0.0:80:80"
     volumes:
         - .:/var/www/html
         - ./.config/php/php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
-      - internal_network
+      internal_network:
+        ipv4_address: 192.168.1.105
     depends_on:
       - mdb
 
@@ -22,7 +21,7 @@ services:
     container_name: serjeant-lite-mdb
     restart: on-failure
     ports:
-      - "10005:3306"
+      - "0.0.0.0:3306:3306"
     volumes:
       - ./.config/database:/docker-entrypoint-initdb.d
       - mdb-data:/var/lib/mysql
@@ -32,20 +31,22 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     networks:
-      - internal_network
+      internal_network:
+        ipv4_address: 192.168.1.106
 
   adminer:
     image: adminer:4.8.1
     container_name: serjeant-lite-adminer
     restart: on-failure
     ports:
-      - "10006:81"
+      - "0.0.0.0:81:81"
     environment:
       ADMINER_DEFAULT_SERVER: mdb
       ADMINER_DESIGN: arcs-material
     command: "php -S 0.0.0.0:81 -t /var/www/html"
     networks:
-      - internal_network
+      internal_network:
+        ipv4_address: 192.168.1.107
     depends_on:
       - mdb
 
@@ -56,3 +57,6 @@ volumes:
 networks:
   internal_network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
