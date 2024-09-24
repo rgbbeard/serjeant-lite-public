@@ -1,0 +1,103 @@
+@import "./buttons.css";
+@import "./keyframes.css";
+@import "./media.css";
+@import "navbar.css";
+
+@font-face {
+  font-family: "Lato";
+  src: url("/res/fonts/Lato/Lato-Regular.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-BoldItalic.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-Bold.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-LightItalic.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-Light.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-Italic.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-Black.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-BlackItalic.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-Thin.ttf") format("truetype"),
+  url("/res/fonts/Lato/Lato-ThinItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src: url("/res/fonts/DM_Mono/DMMono-Regular.ttf") format("truetype"),
+  url("/res/fonts/DM_Mono/DMMono-MediumItalic.ttf") format("truetype"),
+  url("/res/fonts/DM_Mono/DMMono-Medium.ttf") format("truetype"),
+  url("/res/fonts/DM_Mono/DMMono-LightItalic.ttf") format("truetype"),
+  url("/res/fonts/DM_Mono/DMMono-Light.ttf") format("truetype"),
+  url("/res/fonts/DM_Mono/DMMono-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Satisfy";
+  src: url("/res/fonts/Satisfy/Satisfy-Regular.ttf") format("truetype");
+}
+
+* {
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+  color: #222;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: #efefef;
+  background-size: 10%;
+}
+
+body {
+  display: flex;
+}
+
+main {
+  margin: 0;
+  padding: 15px;
+  width: 80vw;
+}
+
+button, input, select, textarea {
+  appearance: none;
+  border: solid 1px #ccc;
+  padding: 0.5em;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+hmax {
+  font-size: 10rem;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+[separator] {
+  width: 100%;
+  height: 1px;
+  margin: 10px 0;
+  padding: 0;
+  display: inline-block;
+  opacity: 0;
+  visibility: hidden;
+}
+
+ul li,
+ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul li {
+  list-style-type: none !important;
+}
+
+section {
+  margin: 10px 0;
+}
+
+/*general*/
+.font-fancy {
+  font-family: "Satisfy", cursive;
+  font-size: 30px;
+}

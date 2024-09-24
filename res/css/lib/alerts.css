@@ -1,0 +1,18 @@
+/* alerts */
+.alert {
+    display: block;
+    width: 100%;
+    outline: solid 3px #ccc;
+}
+
+.alert.error {
+    outline-color: var(--matte-red);
+    padding: 10px;
+}
+
+.alert.error.matte {
+    background-image: linear-gradient(0deg, var(--matte-brown), var(--matte-dark-red));
+    color: #fff;
+    outline: none;
+    border-radius: 5px;
+}

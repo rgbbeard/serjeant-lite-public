@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    container_name: serjeant-lite
+    restart: on-failure
+    ports:
+      - "10004:80"
+    volumes:
+        - .:/var/www/html
+        - ./.config/php/php.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - internal_network
+    depends_on:
+      - mdb
+
+  mdb:
+    image: mariadb:10.4.0
+    container_name: serjeant-lite-mdb
+    restart: on-failure
+    ports:
+      - "10005:3306"
+    volumes:
+      - ./.config/database:/docker-entrypoint-initdb.d
+      - mdb-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: serjeant_lite
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    networks:
+      - internal_network
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: serjeant-lite-adminer
+    restart: on-failure
+    ports:
+      - "10006:81"
+    environment:
+      ADMINER_DEFAULT_SERVER: mdb
+      ADMINER_DESIGN: arcs-material
+    command: "php -S 0.0.0.0:81 -t /var/www/html"
+    networks:
+      - internal_network
+    depends_on:
+      - mdb
+
+volumes:
+  mdb-data:
+    driver: local
+
+networks:
+  internal_network:
+    driver: bridge

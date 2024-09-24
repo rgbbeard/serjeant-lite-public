@@ -1,0 +1,136 @@
+/* loading animations */
+@keyframes load {
+    from {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(260deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-ring {
+    from {
+        transform: rotate(0deg);
+        width: 60px;
+    }
+
+    10% {
+        width: 30px;
+    }
+
+    25% {
+        width: 15px;
+    }
+
+    50% {
+        width: 30px;
+    }
+
+    75% {
+        width: 15px;
+    }
+
+    90% {
+        width: 30px;
+    }
+
+    to {
+        transform: rotate(360deg);
+        width: 60px;
+    }
+}
+
+@keyframes spin-ring-md {
+    from {
+        transform: rotate(0deg);
+        width: 25px;
+    }
+
+    10% {
+        width: 20px;
+    }
+
+    25% {
+        width: 18px;
+    }
+
+    50% {
+        width: 15px;
+    }
+
+    75% {
+        width: 18px;
+    }
+
+    90% {
+        width: 20px;
+    }
+
+    to {
+        transform: rotate(360deg);
+        width: 25px;
+    }
+}
+
+@keyframes spin-ring-sm {
+    from {
+        transform: rotate(0deg);
+        width: 20px;
+    }
+
+    10% {
+        width: 18px;
+    }
+
+    25% {
+        width: 15px;
+    }
+
+    50% {
+        width: 10px;
+    }
+
+    75% {
+        width: 15px;
+    }
+
+    90% {
+        width: 18px;
+    }
+
+    to {
+        transform: rotate(360deg);
+        width: 20px;
+    }
+}
+
+/* ripple animation for buttons */
+@keyframes ripple-animation {
+    from {
+        left: 100%;
+        right: 100%;
+        bottom: 100%;
+        top: 100%;
+    }
+
+    to {
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        top: -100%;
+        opacity: 0;
+    }
+}
