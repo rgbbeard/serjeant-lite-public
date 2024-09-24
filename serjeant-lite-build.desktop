@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Serjeant build(lite)
+Comment=Web-based Jira manager
+TryExec=/opt/serjeant-lite/start.sh
+Exec=/opt/serjeant-lite/start.sh --build
+Icon=/opt/serjeant-lite/res/img/icon.svg
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;
+NotShowIn=KDE;
+Keywords=Todo;Task;Manager;Serjeant;Activity;
+StartupWMClass=Serjeant(lite)
+Name[pt_BR]=serjeant-lite-build.desktop
