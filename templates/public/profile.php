@@ -29,12 +29,12 @@ $infos = $params["infos"];
 				<form action="<?php echo Router::generate_link("update_user_infos"); ?>" method="post">
 					<h2>User: <?php echo $_SESSION["USERNAME"]; ?></h2>
 					<div class="input-group">
-						<label for="display">Display</label>
 						<input id="display" type="text" name="display" value="<?php echo $infos["display"]; ?>" required>
+						<label for="display">Display</label>
 					</div>
                     <div class="input-group password-input mb-10">
-                        <label for="pat">Jira PAT</label>
                         <input id="pat" type="password" name="pat" value="<?php echo $infos["decrypted_token"]; ?>" required>
+                        <label for="pat">Jira PAT</label>
                         <span></span>
                     </div>
 					<input class="btn candy primary" type="submit" name="save" value="Save infos">

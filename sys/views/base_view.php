@@ -4,7 +4,7 @@ namespace View;
 use Exceptions\TemplateNotFoundException;
 use Service\HTTPService;
 use Base\BaseInterface;
-use \ReflectionClass;
+use ReflectionClass;
 
 class BaseView implements BaseInterface {
 	protected string $http_template = "templates/public/http.php";

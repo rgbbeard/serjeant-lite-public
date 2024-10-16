@@ -10,7 +10,7 @@ const TIMEZONE_ROME = "Europe/Rome";
 const TIMEZONE_UTC = "UTC";
 
 function dump(...$items) {
-    $debug = "<pre style='background-color:#000;color:#0f0;padding:10px;font-size:1.1em;'>";
+    $debug = "<pre style='background-color:#333;color:#6f6;padding:10px;font-size:1.1em;'>";
 
     foreach($items as $item) {
         $value = print_r($item, true);
@@ -28,7 +28,11 @@ function dump(...$items) {
 				],
 				json_encode($item)
 			) . ")";
-		} else {
+		} elseif(is_null($item)) {
+            $debug .= "null\n";
+        } elseif(is_string($item)) {
+            $debug .= "string(\"" . $value . "\")\n";
+        } else {
 			$debug .= $value . "\n";
 		}
 	}
@@ -38,7 +42,7 @@ function dump(...$items) {
     echo $debug;
 
     $backtrace_array = debug_backtrace();
-    $backtrace = "<pre style='background-color:#f0f3;padding:10px;'>";
+    $backtrace = "<pre style='background-color:#faf;padding:10px;'>";
     foreach($backtrace_array as $stack => $trace) {
     	$file = @$trace["file"];
     	$function = @$trace["function"];

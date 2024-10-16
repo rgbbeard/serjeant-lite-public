@@ -128,14 +128,14 @@ export class Select {
 	attr(name, value = null) {
 		if(name && !name.empty()) {
 			if(this.multiple) {
-				if(value && value.empty()) {
+				if(!value) {
 					return this.current.getAttribute(name);
 				} else {
 					this.current.setAttribute(name, value);
 					return value;
 				}
 			} else {
-				if(value && value.empty()) {
+				if(!value) {
 					return this.node.getAttribute(name);
 				} else {
 					this.node.setAttribute(name, value);

@@ -81,7 +81,7 @@ class MySQL {
 	}
 	
 	/**
-	 * Reference https://www.php.net/manual/en/pdo.constants.php
+	 * reference https://www.php.net/manual/en/pdo.constants.php
 	 * @param PDOStatement $statement
 	 * @return void
 	 */

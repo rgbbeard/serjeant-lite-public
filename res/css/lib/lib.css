@@ -351,25 +351,6 @@ h20 {
     width: 50% !important;
 }
 
-/*Custom input password*/
-.password-input span {
-    display: inline-block;
-    min-width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    padding: var(--input-padding);
-    cursor: pointer;
-    background-image: url("../../misc/eye-hidden.svg");
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.password-input span[password-shown] {
-    background-image: url("../../misc/eye-shown.svg");
-}
-
 /*Custom checkbox*/
 .checkbox-input label {
     width: 20px;
@@ -502,150 +483,290 @@ spinner-container * {
 
 /*Toast*/
 .toast {
-    width: 40vw;
-    height: 50px;
-    max-height: 80px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px;
-    position: fixed;
-    box-shadow: 0px 2px 10px #333;
-    border-radius: 4px;
-    z-index: 9999999999999;
+        width: 20%;
+        height: 10%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        border-radius: 6px;
+        padding: 10px;
+        position: fixed;
+        z-index: 9999999999999;
 }
 
 .toast.left {
-    left: 15px;
+        left: 15px;
 }
 
 .toast.top {
-    top: 15px;
+        top: 15px;
 }
 
 .toast.bot {
-    bottom: 15px;
+        bottom: 15px;
 }
 
 .toast.right {
-    right: 15px;
+        right: 15px;
 }
 
 .toast.bot.center,
 .toast.top.center {
-    left: 30vw;
-    right: 30vw;
+        left: 40%;
+        right: 40%;
 }
 
 .toast.left.center,
 .toast.right.center {
-    top: 45%;
-    bottom: 45%;
+        top: 45%;
+        bottom: 45%;
 }
 
 .toast.success {
-    background-color: #0f8;
-    color: #000;
+        background-color: rgba(0, 255, 100, 0.7);
+        color: #000;
 }
 
 .toast.warning {
-    background-color: #fc0;
-    color: #000;
+        background-color: rgba(255, 150, 0, 0.7);
+        color: #000;
 }
 
 .toast.error {
-    background-color: #f30;
-}
-
-.toast.error * {
-    color: #fff;
+        background-color: rgba(255, 10, 0, 0.8);
+        color: #fff;
 }
 
 .toast>div {
-    margin: 0 auto;
+        margin: 0 auto;
 }
 
 /*Interface*/
 .interface-background {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 9999999999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 9999999999;
 }
 
 .interface-background .interface {
-    width: 80%;
-    height: 80%;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
+        width: 80%;
+        height: 80%;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow-x: hidden;
 }
 
 .interface-background .interface .interface-title-bar {
-    /* background-color: #0df; */
-    color: #000;
-    padding: 5px 10px;
+        /* background-color: #0df; */
+        color: #000;
+        padding: 5px 10px;
 }
 
 .interface-background .interface .interface-title-bar * {
-    display: inline-block;
+        display: inline-block;
 }
 
 .interface-background .interface .interface-title-bar .interface-close-btn {
-    margin: 0px 5px;
+        margin: 0px 5px;
 }
 
 .interface-background .interface .interface-body {
-    padding: 5px 10px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+        padding: 5px 10px;
 }
 
 /*Custom confirm prompt*/
 .confirm-window-background {
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 9999999999;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 9999999999;
 }
 
 .confirm-window-background .confirm-window-content {
-    min-width: 300px;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: var(--default-border-radius);
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: var(--default-border-radius);
 }
 
 .confirm-window-background .confirm-window-content .btn-ripple {
-    margin: 0 5px;
+        margin: 0 5px;
 }
 
-/*Form controls*/
-.input-group,
-.input-group label {
+/*Custom context menus*/
+.contextmenu {
+        position: absolute;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0px 0px 10px #ccc;
+        border-radius: 10px;
+}
+
+.contextmenu .contextmenu-item {
+        display: inline-block;
+        width: 100%;
+        margin: 2px 0;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+}
+
+.contextmenu .contextmenu-item:hover {
+        background-color:#ccc;
+}
+
+/* Forms */
+.input-group {
+    margin: 30px 0px 10px;
+    position: relative;
+    max-width: 400px;
+}
+
+.input-group::after {
+    content: "";
+    display: table;
     width: 100%;
-    margin: 0 auto 10px;
 }
 
-.input-group input {
-    width: 100%;
-    max-width: 300px;
-}
-
-.input-group label {
+.input-group.inline {
     display: inline-block;
-    text-align: left;
+}
+
+.input-group.auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    padding: 0.5em 0.8em;
+    outline: none;
+    border: solid 1px #aaa;
+    border-radius: 3px;
+    min-width: 200px;
+    width: 100%;
+}
+
+.input-group textarea {
+    min-height: 200px;
+}
+
+.input-group label {
+    padding: 2px 10px;
+    font-size: 15px;
+    line-height: 30px;
+    border-radius: var(--default-border-radius);
+    height: auto;
+}
+
+.input-group.select label {
+    position: initial;
+}
+
+.input-group input[required]:placeholder-shown,
+.input-group textarea[required]:placeholder-shown {
+    border: solid 1px #f00;
+}
+
+.input-group input[required]:placeholder-shown + label,
+.input-group textarea[required]:placeholder-shown + label {
+    color: #888;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: transparent;
+}
+
+.input-group label,
+.input-group input:placeholder-shown + label,
+.input-group textarea:placeholder-shown + label {
+    position: absolute;
+    left: 0;
+    color: #999;
+    transition: all 0.3s;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: text;
+}
+
+.input-group input:focus + label,
+.input-group textarea:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:not(:placeholder-shown) + label,
+.input-group input[required]:focus:placeholder-shown + label,
+.input-group textarea[required]:focus:placeholder-shown + label {
+    top: calc((0.5em + 15px) * -1);
+    left: 0;
+    font-size: 12px;
+    line-height: 15px;
+    background-color: #bbb;
+    color: #fff;
+}
+
+.input-group input[required]:focus:placeholder-shown + label,
+.input-group textarea[required]:focus:placeholder-shown + label {
+    background-color: #ff0000 !important;
+}
+
+.input-group input[required]:focus:placeholder-shown + label,
+.input-group textarea[required]:focus:placeholder-shown + label {
+    background-color: rgba(250, 0, 0, 0.4);
+}
+
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:not(:placeholder-shown) + label {
+    background-color: rgba(150, 150, 150, 0.5);       
+}
+
+.input-group textarea:focus + label {
+    top: -20% !important;
+}
+
+.input-group.password-input {
+    clear: both;
+}
+
+.input-group.password-input span {
+    display: inline-block;
+    width: 10%;
+    min-width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    padding: var(--input-padding);
+    cursor: pointer;
+    background-image: url("../../misc/eye-hidden.svg");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.input-group.password-input span[password-shown] {
+    background-image: url("../../misc/eye-shown.svg");
+}
+
+.input-group.password-input * {
+    float: left;
+} 
+
+.input-group.password-input input {
+    max-width: 90%;
 }
 
 /* custom select */

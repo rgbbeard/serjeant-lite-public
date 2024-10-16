@@ -1,7 +1,6 @@
 #navbar {
   width: 20vw;
   max-width: 300px;
-  height: 100vh;
   background-color: #fff;
   display: flex;
   flex-flow: column wrap;

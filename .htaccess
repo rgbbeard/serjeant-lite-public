@@ -1,0 +1,40 @@
+###############   NOTE   #################
+# REMEMBER TO REMOVE LOCALHOST DIRECTORY #
+# BEFORE DEPLOYING TO PRODUCTION		 #
+# ALL INSTANCES MUST BE /index.php 	   	 #
+##########################################
+
+DirectoryIndex /index.php
+FallbackResource /index.php
+
+##############################################
+# DISPLAY ALL SERVER ERRORS IN A CUSTOM PAGE #
+##############################################
+ErrorDocument 300 /index.php
+ErrorDocument 301 /index.php
+ErrorDocument 302 /index.php
+
+ErrorDocument 400 /index.php
+ErrorDocument 401 /index.php
+ErrorDocument 403 /index.php
+ErrorDocument 404 /index.php
+
+ErrorDocument 500 /index.php
+
+##########################
+# SET FILES CACHING TIME #
+##########################
+<FilesMatch "\.(jpg|png|svg|css|js|php)$">
+    Header set Cache-Control "public, max-age=0"
+</FilesMatch>
+
+############################
+# SECURE FILES AND FOLDERS #
+############################
+RewriteEngine On
+
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+RewriteRule ^(templates/) - [F]
+
+RewriteCond %{REMOTE_ADDR} !\.(htaccess|json|py|sql|desktop|scss)$
+RewriteRule ^(sys/|templates/|utils/|config/) - [F]

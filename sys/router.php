@@ -63,6 +63,7 @@ class Router {
 
 	public function route_has_params(string $route_name): bool {
 		return !@empty(self::$routes[$route_name]) 
+			&& !@empty(self::$routes[$route_name]["params"]) 
 			&& self::$routes[$route_name]["params"] != false
 			&& count(self::$routes[$route_name]["params"]) > 0;
 	}
@@ -327,7 +328,7 @@ class Router {
 	    if ($route["match_type"] === "regex" && !empty($route["params"])) {
 	        // For regex type, we assume params are defined in order and necessary
 	        $paramsInPath = [];
-	        foreach ($route["params"] as $paramName) {
+	        foreach ($route["params"] as $paramName => $paramPattern) {
 	            if (!isset($params[$paramName])) {
 	                return $link; // Missing parameter, handle as needed (error/logging)
 	            }

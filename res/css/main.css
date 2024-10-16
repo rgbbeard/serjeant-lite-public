@@ -43,6 +43,7 @@ html, body {
   margin: 0;
   background-color: #efefef;
   background-size: 10%;
+  min-height: 100vh;
 }
 
 body {
@@ -50,8 +51,7 @@ body {
 }
 
 main {
-  margin: 0;
-  padding: 15px;
+  margin: 0 auto;
   width: 80vw;
 }
 
@@ -100,4 +100,120 @@ section {
 .font-fancy {
   font-family: "Satisfy", cursive;
   font-size: 30px;
+}
+
+/* pagination */
+.pagination {
+  width: 100%;
+}
+
+.pagination .page {
+  display: inline-block;
+  line-height: 15px;
+  background-color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  min-width: 40px;
+  text-align: center;
+}
+
+.pagination .page.selected {
+  background-color: #ccc;
+}
+
+.pagination .page:nth-child(1) {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.pagination .page:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* homepage */
+.issue-finder {
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+  background-color: #0803;
+  padding: 5px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  outline: solid 1px #080;
+}
+
+.issue-finder input {
+  border-radius: 50px;
+}
+
+.issue-finder input:focus {
+  outline: none !important;
+}
+
+.issues-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.issues-container .issue {
+  display: inline-flex;
+  width: 33%;
+  max-height: 300px;
+  min-height: 100px;
+  background-color: #fff;
+  margin: 2px auto;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: solid 1px #aaa;
+  transition: all 0.3s;
+  flex-direction: column;
+}
+
+.issues-container .issue:hover {
+  transform: scale(0.95);
+}
+
+.issues-container .issue .infos {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.issues-container .issue .title,
+.issues-container .issue .subtitle {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+  margin: 0 0 5px;
+}
+
+.issues-container .issue .status {
+  max-width: 100px;
+  height: 20px;
+}
+
+.issues-container .issue .priority {
+  width: 20px;
+  height: 20px;
+}
+
+.issues-container .issue .status img,
+.issues-container .issue .priority img {
+  height: 100%;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.issues-container .issue .priority,
+.issues-container .issue .status {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* add issue note page */
+.issue-container {
+  
 }

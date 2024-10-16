@@ -5,7 +5,7 @@ base="$(dirname $(readlink -f $0))"
 
 appstart() {
   docker_compose
-  xdg-open "http://192.168.1.105/"
+  xdg-open "http://192.168.2.105/"
 }
 
 docker_compose() {

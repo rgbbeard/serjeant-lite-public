@@ -16,22 +16,23 @@ $form_sent = $params["form_sent"];
 			<form action="" method="post">
                 <h3>Login to Serjeant</h3>
 				<div class="input-group">
-					<label for="username">Username</label>
 					<input
                         id="username"
                         type="text"
                         name="username"
                         placeholder="username"
                         value="<?php echo $params["username"]; ?>"/>
+					<label for="username">Username</label>
 				</div>
-				<div class="input-group">
-					<label for="password">Password</label>
+				<div class="input-group password-input">
 					<input
                         id="password"
                         type="password"
                         name="password"
                         placeholder="password"
                         value="<?php echo $params["password"]; ?>"/>
+					<label for="password">Password</label>
+					<span></span>
 				</div>
 				<button class="btn candy primary">Login</button>
 				<?php

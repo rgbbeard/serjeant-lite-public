@@ -54,17 +54,82 @@ class PublicView extends BaseView {
 	 * @route(home)
 	 * @menu(order: 1, visible: true, display: Home)
 	 */
-	public function get_home() {
+	public function get_home(string $params = "") {
 		if(!$this->userService->has_jira_pat()) {
 			Router::redirect_to("user_profile", [
 				"requires_pat" => true
 			]);
 		}
-		
+
+		if(!empty($params)) {
+			$params = json_decode($params);
+			$page = $params->page ?? 1;
+		}
+
+		# define the number of pagination buttons
+		$maxResults = 50;
+		$startAt = ($page ?? 1) * $maxResults;
+
+		$paginationLimit = 5;
+
+		$startPage = max(1, $page - floor($paginationLimit / 2));
+		$endPage = $startPage + $paginationLimit - 1;
+
+		$pages = range($startPage, $endPage);
+
 		$pat = $this->userService->get_jira_pat();
-		$issues = $this->jiraService->get_user_issues($pat);
+		$issues = $this->jiraService->get_user_issues($pat, $page);
 		echo $this->render("templates/public/home.php", [
-			"issues" => $issues
+			"issues" => $issues,
+			"pages" => $pages,
+			"page" => $page
+		]);
+	}
+
+	public function get_add_issue_note(string $params = "") {
+		if(!$this->userService->has_jira_pat()) {
+			Router::redirect_to("user_profile", [
+				"requires_pat" => true
+			]);
+		}
+
+		$issue_id = null;
+		$pat = $this->userService->get_jira_pat();
+
+		if(!empty($params)) {
+			$data = Converter::json_decode($params, true);
+			$issue_id = $data["issue_id"];
+
+			$this->jiraService->get_single_issue($pat, $issue_id);
+		}
+
+		$issue = null;
+
+		echo $this->render("templates/public/add_issue_note.php", [
+			"issue" => $issue,
+			"issue_id" => $issue_id
+		]);
+	}
+
+	public function exec_add_issue_note() {
+		if(Router::has_post_data()) {
+			$data = Router::get_post_data();
+			dd($data);
+		}
+	}
+
+	/**
+	 * @route(issues_notes)
+	 * @menu(order: 2, visible: true, display: Notes)
+	 */
+	public function get_issues_notes() {
+		if(!$this->userService->has_jira_pat()) {
+			Router::redirect_to("user_profile", [
+				"requires_pat" => true
+			]);
+		}
+
+		echo $this->render("templates/public/issues_notes.php", [
 		]);
 	}
 
@@ -76,7 +141,7 @@ class PublicView extends BaseView {
 		echo $this->render("templates/public/about.php");
 	}
 	
-	public function get_user_registration(?string $params = "") {
+	public function get_user_registration() {
 		$result = false;
 		$form_sent = false;
 		$username = "";
@@ -84,10 +149,10 @@ class PublicView extends BaseView {
 		$display = "";
 		
 		if(Router::has_post_data()) {
-			$params = json_decode($params);
-			$username = $params->username;
-			$password = $params->password;
-			$display = $params->display;
+			$data = Router::get_post_data();
+			$username = $data["username"];
+			$password = $data["password"];
+			$display = $data["display"];
 			
 			$result = $this->userService->do_user_registration($username, $password, $display);
 			
@@ -109,16 +174,16 @@ class PublicView extends BaseView {
 		]);
 	}
 	
-	public function get_user_login(?string $params = "") {
+	public function get_user_login() {
 		$success = false;
 		$form_sent = false;
 		$username = "";
 		$password = "";
 		
 		if(Router::has_post_data()) {
-			$params = json_decode($params);
-			$username = $params->username;
-			$password = $params->password;
+			$data = Router::get_post_data();
+			$username = $data["username"];
+			$password = $data["password"];
 			
 			$success = $this->userService->attempt_user_login($username, $password);
 			
